@@ -57,15 +57,4 @@ requirements-deploy.txt
 /odoo-bin
 /odoo.conf
 
-/addons-custom/xink_oca_knowledge/
-/addons-custom/xink_oca_qms/
-/addons-custom/theme_custom/
-/addons-custom/xink_oca_knowledge/
-/addons-custom/xink_oca_qms/
-/addons-custom/theme_custom/
-/addons-custom/xink_oca_knowledge/
-/addons-custom/xink_oca_qms/
-/addons-custom/theme_custom/
-/addons-custom/xink_oca_knowledge/
-/addons-custom/xink_oca_qms/
-/addons-custom/theme_custom/
+/addons-custom/ai_chat_base/
