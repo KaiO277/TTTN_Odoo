@@ -53,6 +53,19 @@ package.json
 requirements.txt
 requirements-deploy.txt
 
-*/requirements-deploy.txt
-*/odoo-bin
-*/odoo.conf
+/requirements-deploy.txt
+/odoo-bin
+/odoo.conf
+
+/addons-custom/xink_oca_knowledge/
+/addons-custom/xink_oca_qms/
+/addons-custom/theme_custom/
+/addons-custom/xink_oca_knowledge/
+/addons-custom/xink_oca_qms/
+/addons-custom/theme_custom/
+/addons-custom/xink_oca_knowledge/
+/addons-custom/xink_oca_qms/
+/addons-custom/theme_custom/
+/addons-custom/xink_oca_knowledge/
+/addons-custom/xink_oca_qms/
+/addons-custom/theme_custom/
