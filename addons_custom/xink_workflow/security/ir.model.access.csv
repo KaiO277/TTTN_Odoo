@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_xink_workflow_json_admin,xink.workflow.json admin,model_xink_workflow_json,base.group_system,1,1,1,1
-access_xink_workflow_json_user,xink.workflow.json user,model_xink_workflow_json,base.group_user,1,0,0,0

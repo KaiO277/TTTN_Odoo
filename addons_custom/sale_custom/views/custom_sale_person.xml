@@ -1,8 +1,0 @@
-<odoo>
-<!--    <data noupdate="1">-->
-<!--        <menuitem id="sale.report_sales_team"-->
-<!--                  parent="sale.menu_sale_report"-->
-<!--                  sequence="60"/>-->
-<!--        <menuitem id="sale.report_sales_team" parent="sale.menu_sale_report" sequence="70"/>-->
-<!--    </data>-->
-</odoo>

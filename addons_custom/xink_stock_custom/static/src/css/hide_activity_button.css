@@ -1,6 +1,0 @@
-/* Ẩn nút activity ở mọi view của stock.picking */
-.o_kanban_view .o_switch_view.o_activity,
-.o_calendar_view .o_switch_view.o_activity,
-.o_list_view .o_switch_view.o_activity {
-    display: none !important;
-}

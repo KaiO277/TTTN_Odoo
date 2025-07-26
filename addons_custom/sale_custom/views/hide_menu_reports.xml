@@ -1,8 +1,0 @@
-<odoo>
-    <record id="sale.menu_reporting_salespeople" model="ir.ui.menu">
-        <field name="active">False</field>
-    </record>
-    <record id="sale.menu_reporting_sales" model="ir.ui.menu">
-        <field name="active">False</field>
-    </record>
-</odoo>

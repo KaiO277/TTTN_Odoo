@@ -1,9 +1,0 @@
-#. module: xink_purchase
-#: model:ir.model.fields.selection,name:purchase.selection__purchase_order__state__draft
-msgid "RFQ"
-msgstr "Đề xuất"
-
-#. module: xink_purchase
-#: model:ir.model.fields.selection,name:purchase.selection__purchase_order__state__sent
-msgid "RFQ Sent"
-msgstr "Đang phê duyệt"
