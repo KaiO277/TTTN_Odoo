@@ -1,0 +1,19 @@
+<odoo>
+    <data noupdate="1">
+
+        <!-- Nhóm quyền: admin -->
+        <record id="group_xink_easy_checkin_admin" model="res.groups">
+            <field name="name">Xink easyCheckin Admin</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- Nhóm quyền: employee -->
+        <record id="group_xink_easy_checkin_employee" model="res.groups">
+            <field name="name">Xink easyCheckin Employee</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+    </data>
+</odoo>

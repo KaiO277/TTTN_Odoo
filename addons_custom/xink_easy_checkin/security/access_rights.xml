@@ -1,0 +1,75 @@
+<odoo>
+
+    <!-- Admin access -->
+    <record id="xink_easy_checkin_admin_access_employee" model="ir.model.access">
+        <field name="name">hr.employee</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="group_id" ref="xink_easy_checkin.group_xink_easy_checkin_admin"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+    <record id="xink_easy_checkin_admin_access_user" model="ir.model.access">
+        <field name="name">res.users</field>
+        <field name="model_id" ref="base.model_res_users"/>
+        <field name="group_id" ref="xink_easy_checkin.group_xink_easy_checkin_admin"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+    <record id="xink_easy_checkin_admin_access_partner" model="ir.model.access">
+        <field name="name">res.partner</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="group_id" ref="xink_easy_checkin.group_xink_easy_checkin_admin"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+    <record id="xink_easy_checkin_admin_access_groups" model="ir.model.access">
+        <field name="name">res.groups</field>
+        <field name="model_id" ref="base.model_res_groups"/>
+        <field name="group_id" ref="xink_easy_checkin.group_xink_easy_checkin_admin"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Employee access -->
+    <record id="xink_easy_checkin_employee_access_attendance" model="ir.model.access">
+        <field name="name">hr.attendance</field>
+        <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+        <field name="group_id" ref="xink_easy_checkin.group_xink_easy_checkin_employee"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="xink_easy_checkin_employee_access_leave" model="ir.model.access">
+        <field name="name">hr.leave</field>
+        <field name="model_id" ref="hr_holidays.model_hr_leave"/>
+        <field name="group_id" ref="xink_easy_checkin.group_xink_easy_checkin_employee"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="xink_easy_checkin_employee_access_user" model="ir.model.access">
+        <field name="name">res.users</field>
+        <field name="model_id" ref="base.model_res_users"/>
+        <field name="group_id" ref="xink_easy_checkin.group_xink_easy_checkin_employee"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+</odoo>

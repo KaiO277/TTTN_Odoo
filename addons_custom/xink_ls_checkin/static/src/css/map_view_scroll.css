@@ -1,0 +1,18 @@
+/* Scroll cho toàn bộ vùng nội dung OWL */
+.xink-scroll-wrapper {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 16px;
+}
+
+#map + div {
+    bottom: 60px !important; /* Đẩy lên cao hơn (mặc định là 10px) */
+    right: 20px;
+    background: white;
+    padding: 10px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    z-index: 1000;
+}

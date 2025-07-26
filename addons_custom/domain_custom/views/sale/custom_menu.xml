@@ -1,0 +1,26 @@
+<odoo>
+    <!-- Ghi đè menu chính: Đổi tên Configuration -->
+    <!--    <record id="sale.menu_sale_config" model="ir.ui.menu">-->
+    <!--        <field name="name">Configuration</field>-->
+    <!--    </record>-->
+
+    <!-- Ẩn: Products -> menu_product_combos -->
+    <!--    <record id="sale.menu_product_combos" model="ir.ui.menu">-->
+    <!--        <field name="groups_id" eval="[(6, 0, [])]"/>-->
+    <!--    </record>-->
+
+    <!-- Ẩn Activities -->
+    <!--    <record id="sale.sale_menu_config_activities" model="ir.ui.menu">-->
+    <!--        <field name="groups_id" eval="[(6, 0, [])]"/>-->
+    <!--    </record>-->
+
+    <!-- Ẩn Headers/Footers -->
+<!--    <record id="sale_pdf_quote_builder.sale_menu_quotation_document_action" model="ir.ui.menu">-->
+<!--        <field name="active">False</field>-->
+<!--    </record>-->
+
+    <!-- Đây là submenu liên quan -->
+    <!--    <record id="sale_pdf_quote_builder.sale_menu_quotation_document_action" model="ir.ui.menu">-->
+    <!--        <field name="groups_id" eval="[(6, 0, [])]"/>-->
+    <!--    </record>-->
+</odoo>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Kế thừa view gốc để ẩn các thành phần bạn đã làm -->
+        <record id="view_order_form_hide_optional_signature_and_more" model="ir.ui.view">
+            <field name="name">sale.order.form.hide.optional.signature.and.more</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="inherit_id" ref="sale_management.sale_order_form_quote"/>
+            <field name="arch" type="xml">
+
+                <!-- 1. Ẩn tab "Sản phẩm tuỳ chọn" -->
+                <xpath expr="//page[@name='optional_products']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <!-- 2. Ẩn tab "Chữ ký khách hàng" -->
+                <xpath expr="//page[@name='customer_signature']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <!-- 3. Comment để hiện lại nút danh mục" -->
+<!--                <xpath expr="//button[@name='action_add_from_catalog']" position="replace"/>-->
+
+                <!-- 4. Ẩn nút "Thêm phần" -->
+                <xpath expr="//create[@name='add_section_control']" position="replace"/>
+
+                <!-- 5. Ẩn nút "Thêm ghi chú" -->
+                <xpath expr="//create[@name='add_note_control']" position="replace"/>
+
+                <!-- 6. Ẩn field "require_signature" -->
+                <xpath expr="//field[@name='require_signature']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <!-- 7. Ẩn div chứa require_payment -->
+                <xpath expr="//div[@id='require_payment']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <!-- 8. Ẩn field "client_order_ref" -->
+                <xpath expr="//field[@name='client_order_ref']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <!-- 9. Ẩn field "tag_ids" -->
+                <xpath expr="//field[@name='tag_ids']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <!-- 10. Ẩn mục "Tracking" -->
+                <xpath expr="//group[@name='sale_reporting']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

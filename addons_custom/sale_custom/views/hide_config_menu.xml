@@ -1,0 +1,26 @@
+<odoo>
+    <!--    product_combos-->
+    <record id="sale.menu_product_combos" model="ir.ui.menu">
+        <field name="active">False</field>
+    </record>
+
+    <!--    activities-->
+    <record id="sale.sale_menu_config_activities" model="ir.ui.menu">
+        <field name="active">False</field>
+    </record>
+
+    <!--    tag_config-->
+    <record id="sale.menu_tag_config" model="ir.ui.menu">
+        <field name="active">False</field>
+    </record>
+
+    <!--    payment-->
+    <record id="sale.payment_menu" model="ir.ui.menu">
+        <field name="active">False</field>
+    </record>
+
+    <!--    Headers/Footers-->
+    <record id="sale_pdf_quote_builder.sale_menu_quotation_document_action" model="ir.ui.menu">
+        <field name="active">False</field>
+    </record>
+</odoo>

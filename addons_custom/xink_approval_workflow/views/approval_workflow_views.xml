@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Search View -->
+        <record id="view_approval_workflow_search" model="ir.ui.view">
+            <field name="name">approval.workflow.search</field>
+            <field name="model">xink.approval.workflow</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Tìm kiếm Quy Trình Phê Duyệt">
+                    <field name="name"/>
+                    <field name="model_id"/>
+                    <field name="department_id"/>
+                    <filter string="Đang hoạt động" name="active" domain="[('active', '=', True)]"/>
+                    <filter string="Đã lưu trữ" name="inactive" domain="[('active', '=', False)]"/>
+                    <group expand="0" string="Nhóm theo">
+                        <filter string="Mô hình" name="group_by_model" context="{'group_by': 'model_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action Window -->
+        <record id="action_approval_workflow_main" model="ir.actions.act_window">
+            <field name="name">Quy Trình Phê Duyệt</field>
+            <field name="res_model">xink.approval.workflow</field>
+            <field name="view_mode">list,form</field>
+            <field name="context">{'search_default_active': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Tạo quy trình phê duyệt đầu tiên!
+                </p>
+            </field>
+        </record>
+
+        <!-- List View -->
+        <record id="view_approval_workflow_list_main" model="ir.ui.view">
+            <field name="name">xink.approval.workflow.list.main</field>
+            <field name="model">xink.approval.workflow</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list string="Danh Sách Quy Trình Phê Duyệt" sample="1" decoration-muted="active == False" create="true">
+                    <field name="name" string="Tên quy trình"/>
+                    <field name="model_id" string="Áp dụng cho phiếu"/>
+                    <field name="department_id" string="Phòng Ban" optional="show"/>
+                    <field name="create_date" string="Ngày tạo" optional="show"/>
+                    <field name="create_uid" string="Người tạo" optional="hide"/>
+                    <field name="active" widget="boolean_toggle" string="Trạng thái"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View with Multiple Conditions -->
+        <record id="view_approval_workflow_form_main" model="ir.ui.view">
+            <field name="name">xink.approval.workflow.form.main</field>
+            <field name="model">xink.approval.workflow</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Quy trình phê duyệt">
+                    <header>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" string="Tên quy trình" required="1" placeholder="VD: Phê duyệt đơn mua hàng > 5 triệu"/>
+                            </h1>
+                        </div>
+                        
+                        <group>
+                            <group string="Thông Tin Cơ Bản">
+                                <field name="model_id" string="Áp dụng cho phiếu" required="1" 
+                                       options="{'no_create': True, 'no_open': True}"
+                                       help="Chọn model/đối tượng mà quy trình này sẽ áp dụng"/>
+                                <field name="department_id" string="Phòng Ban"
+                                       options="{'no_create': True, 'no_open': True}"
+                                       help="Phòng ban áp dụng quy trình phê duyệt này"/>
+                                <field string="Trạng Thái" name="active" widget="boolean_button" options="{'terminology': 'active'}"/>
+                                <field name="notify_user_ids" string="Người nhận thông báo"
+                                           widget="many2many_tags"
+                                           help="Danh sách người dùng sẽ nhận thông báo khi quy trình hoàn thành"/>
+                            </group>
+                        </group>
+                        
+                        <notebook>
+                            
+                            <!-- Tab Cấp Phê Duyệt -->
+                            <page string="Các cấp phê duyệt" name="approval_levels">
+                                <field name="level_ids">
+                                    <list string="Cấp Phê Duyệt" editable="bottom">
+                                        <field name="sequence" string="Thứ Tự" width="70px"/>
+                                        <field name="name" string="Tên Cấp" required="1"/>
+                                        <field name="approver_type" string="Loại Người Duyệt"/>
+                                        <field name="user_ids" string="Người Duyệt" 
+                                               widget="many2many_tags"
+                                               invisible="approver_type != 'user'"
+                                               required="approver_type == 'user'"/>
+                                        <field name="department_ids" string="Phòng Ban"
+                                               widget="many2many_tags"
+                                               invisible="approver_type != 'department_manager'"
+                                               required="approver_type == 'department_manager'"/>
+                                        <field name="approval_mode" string="Chế Độ Duyệt"/>
+                                        <field name="required_percentage" string="Tỷ Lệ (%)"
+                                               invisible="approval_mode != 'percentage'"
+                                               required="approval_mode == 'percentage'"/>
+                                    </list>
+                                </field>
+                            </page>
+
+                            <!-- Tab Điều Kiện -->
+                            <page string="Điều kiện áp dụng" name="conditions">
+                                <field name="condition_ids">
+                                    <list string="Điều kiện" editable="bottom">
+                                        <field name="sequence" string="TT" width="50px"/>
+                                        <field name="name" string="Tên điều kiện" required="1"/>
+                                        <field name="conditional_field_id" string="Trường áp dụng" required="1"
+                                               domain="[('model_id', '=', parent.model_id)]"
+                                               options="{'no_create': True, 'no_open': True}"/>
+                                        <field name="field_description" string="Mô Tả" readonly="1"/>
+                                        <field name="conditional_operator" string="Điều kiện" required="1"/>
+                                        <field name="conditional_value" string="Giá Trị" required="1"/>
+                                        <field name="condition_domain" string="Domain" readonly="1" optional="hide"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

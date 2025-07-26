@@ -1,0 +1,65 @@
+.score-buttons-container {
+  gap: 2px;
+  min-height: 30px;
+}
+
+.score-btn {
+  min-width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  transition: all 0.2s ease !important;
+  border: 1px solid #dee2e6 !important;
+  position: relative !important;
+  overflow: hidden !important;
+  background: #f8f9fa !important;
+  color: #495057 !important;
+}
+
+.score-btn:hover:not(:disabled) {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+  background: #e9ecef !important;
+}
+
+.score-btn.active {
+  transform: scale(1.02) !important;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2) !important;
+  border-color: #007bff !important;
+  background: #007bff !important;
+  color: white !important;
+}
+
+.score-btn:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+@media (max-width: 576px) {
+  .score-btn {
+    min-width: 28px !important;
+    height: 28px !important;
+    font-size: 11px !important;
+  }
+}
+
+
+.score-btn.btn-secondary,
+.score-btn.btn-warning,
+.score-btn.btn-info,
+.score-btn.btn-success {
+  background: #f8f9fa !important;
+  color: #495057 !important;
+  border-color: #dee2e6 !important;
+}
+
+.score-btn.btn-secondary.active,
+.score-btn.btn-warning.active,
+.score-btn.btn-info.active,
+.score-btn.btn-success.active {
+  background: #007bff !important;
+  color: white !important;
+  border-color: #007bff !important;
+}

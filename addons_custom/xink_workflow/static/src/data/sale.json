@@ -1,0 +1,37 @@
+{
+  "workflow": {
+    "name": "Nghiệp vụ bán hàng",
+    "mainflow": [
+      [
+        {"name": "Báo giá", "icon": "fa fa-file-text", "link": "/web#action=sale.action_quotations"},
+        {},
+        {"name": "Đơn hàng cần xuất HĐ", "icon": "fa fa-file-text", "link": "/web#action=sale.action_orders_to_invoice"}
+      ],
+      [
+
+        {"name": "Sản phẩm", "icon": "fa fa-cube", "link": "/web#action=sale.product_template_action"},
+        {"name": "Biến thể sản phẩm", "icon": "fa fa-cubes", "link": "/web#action=product.product_normal_action_sell"},
+        {"name": "Bảng giá", "icon": "fa fa-tag", "link": "/web#action=product.product_pricelist_action2"}
+      ],
+      [
+        {},
+        {"name": "Chiết khấu", "icon": "fa fa-percent", "link": "/web#action=loyalty.loyalty_program_discount_loyalty_action"},
+        {}
+      ]
+    ],
+    "report": [
+      {"name": "Tổng hợp", "icon": "fa fa-file", "link": "/web#action=sale.action_order_report_all"},
+      {"name": "Theo sản phẩm", "icon": "fa fa-file", "link": "/web#action=sale.action_order_report_products"},
+      {"name": "Theo khách hàng", "icon": "fa fa-user", "link": "/web#action=sale.action_order_report_customers"},
+      {"name": "Theo nhân viên", "icon": "fa fa-file", "link": "/web#action=sale.action_order_report_salesperson"},
+      {"name": "Theo bộ phận bán hàng", "icon": "fa fa-users", "link": "/web#action=sales_team.crm_team_action_sales"}
+    ],
+    "dependency": [
+      {"name": "Thẻ quà tặng", "icon": "fa fa-gift", "link": "/web#action=loyalty.loyalty_program_gift_ewallet_action"},
+      {"name": "Cài đặt", "icon": "fa fa-cog", "link": "/web#action=sale.action_sale_config_settings"},
+      {"name": "Bộ phận bán hàng", "icon": "fa fa-building", "link": "/web#action=sales_team.crm_team_action_config"},
+      {"name": "Bộ phận bán hàng", "icon": "fa fa-building", "link": "/web#action=sales_team.crm_team_action_config"},
+      {"name": "Bộ phận bán hàng", "icon": "fa fa-building", "link": "/web#action=sales_team.crm_team_action_config"}
+    ]
+  }
+}

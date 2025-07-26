@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="digest_section_mobile_custom1" inherit_id="digest.digest_section_mobile">
+        <xpath expr="//p[@class='run_business']" position="replace">
+            <p class="run_business">Run your business from anywhere with <b>LS SmartWork Mobile</b>.</p>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,18 @@
+<templates id="template" xml:space="preserve">
+    <t t-extend="FormView.buttons">
+        <t t-jquery="button.o_form_button_save" t-operation="replace">
+            <button type="button" class="btn btn-primary o_form_button_save"
+                t-if="widget.modelName === 'sales.target' and widget.mode === 'edit'">
+                Xác nhận
+            </button>
+            <button type="button" class="btn btn-secondary o_form_button_save"
+                t-if="widget.modelName === 'sales.target' and widget.mode === 'edit'">
+                Lưu
+            </button>
+            <button type="button" class="btn btn-primary o_form_button_save"
+                t-if="not (widget.modelName === 'sales.target' and widget.mode === 'edit')">
+                <t t-esc="widget.saveButtonLabel"/>
+            </button>
+        </t>
+    </t>
+</templates> 

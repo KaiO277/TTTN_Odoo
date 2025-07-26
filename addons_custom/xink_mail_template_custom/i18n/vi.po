@@ -1,0 +1,13 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: vi\n"
+
+#. module: xink_mail_template_custom
+msgid "Compose Email"
+msgstr "Soạn thư"
+
+#. module: xink_mail_template_custom
+#: model_terms:ir.ui.view,arch_db:xink_mail_template_custom.digest_section_mobile_custom1
+msgid "Run your business from anywhere with <b>LS SmartWork Mobile</b>."
+msgstr "Vận hành doanh nghiệp mọi lúc, mọi nơi với <b>LS SmartWork di động</b>."

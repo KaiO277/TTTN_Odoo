@@ -1,0 +1,7 @@
+<odoo>
+    <menuitem id="xink_goal_menu_sales_target"
+              name="Đặt mục tiêu doanh số"
+              parent="sale.sale_menu_root"
+              action="action_sales_target"
+              sequence="100"/>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_supplier_evaluation" model="ir.ui.view">
+        <field name="name">res.partner.form.supplier.evaluation</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Lịch sử đánh giá" invisible="is_company == False">
+                    <field name="supplier_evaluation_ids" nolabel="1">
+                        <list>
+                            <field name="name"/>
+                            <field name="evaluation_date"/>
+                            <field name="classification"/>
+                            <field name="status_display" string="Trạng thái" widget="html"/>
+                        </list>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="view_partner_form_vendor_code" model="ir.ui.view">
+        <field name="name">res.partner.form.vendor.code</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="website" position="after">
+                <field name="vendor_code" string="Mã nhà cung cấp" readonly="1" invisible="not is_company"/>
+            </field>
+        </field>
+    </record>
+</odoo>

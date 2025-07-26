@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+# Quyền cho Admin
+xink_easy_checkin_admin_access_employee,hr.employee,model_hr_employee,xink_easy_checkin.group_xink_easy_checkin_admin,1,1,1,1
+xink_easy_checkin_admin_access_user,res.users,model_res_users,xink_easy_checkin.group_xink_easy_checkin_admin,1,1,1,1
+xink_easy_checkin_admin_access_partner,res.partner,model_res_partner,xink_easy_checkin.group_xink_easy_checkin_admin,1,1,1,1
+xink_easy_checkin_admin_access_groups,res.groups,model_res_groups,xink_easy_checkin.group_xink_easy_checkin_admin,1,0,0,0
+
+# Quyền cho Employee
+xink_easy_checkin_employee_access_attendance,hr.attendance,model_hr_attendance,xink_easy_checkin.group_xink_easy_checkin_employee,1,0,1,0
+xink_easy_checkin_employee_access_leave,hr.leave,model_hr_leave,xink_easy_checkin.group_xink_easy_checkin_employee,1,0,1,0

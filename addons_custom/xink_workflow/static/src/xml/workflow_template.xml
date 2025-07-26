@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="xink_workflow.workflow_template_backend" owl="1">
+        <t t-set="wf" t-value="state.workflow"/>
+        <div class="workflow-page" t-att-data-module="module">
+            <div class="workflow-title">
+                <t t-esc="wf.name or 'Quy trình'"/>
+            </div>
+            
+            <!-- Loading -->
+            <t t-if="wf.loading">
+                <div class="workflow-loading">
+                    <i class="fa fa-spinner fa-spin"/>
+                    <p>Đang tải dữ liệu...</p>
+                </div>
+            </t>
+
+            <!-- Error -->
+            <t t-if="!wf.loading and wf.error">
+                <div class="workflow-error">
+                    <t t-esc="wf.error"/>
+                </div>
+            </t>
+
+            <!-- Nội dung chính -->
+            <t t-if="!wf.loading and !wf.error">
+                <div class="workflow-content-wrapper">
+                    <!-- MAINFLOW + DEPENDENCY -->
+                    <div class="workflow-left">
+                        <!-- Mainflow -->
+                        <t t-if="wf.mainflow">
+                            <div class="workflow-mainflow-wrapper">
+                                <div class="workflow-mainflow">
+                                    <div class="horizontal-line"/>
+                                    <t t-foreach="wf.mainflow" t-as="column" t-key="column_index">
+                                        <div class="workflow-mainflow-column">
+                                            <t t-foreach="column" t-as="step" t-key="step_index">
+                                                <t t-if="step and step.name">
+                                                    <div class="workflow-mainflow-step">
+                                                        <div class="workflow-btn "
+                                                             t-on-click="onNavigate"
+                                                             t-att-data-action-url="step.link">
+                                                            <i t-att-class="step.icon or 'fa fa-question'"/>
+                                                            <span class="step-label"><t t-esc="step.name"/></span>
+                                                        </div>
+                                                        <t t-if="step_index === 0">
+                                                            <div class="line-down"/>
+                                                        </t>
+                                                        <t t-if="step_index === 2">
+                                                            <div class="line-up"/>
+                                                        </t>
+                                                    </div>
+                                                </t>
+                                                <t t-if="!step or !step.name">
+                                                    <div class="workflow-mainflow-step empty-step"/>
+                                                </t>
+                                            </t>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </t>
+
+                        <!-- Dependency -->
+                        <t t-if="wf.dependency">
+                            <div class="workflow-dependency-wrapper">
+                                <div class="workflow-dependency">
+                                    <t t-foreach="wf.dependency" t-as="dep" t-key="dep_index">
+                                        <div class="workflow-btn"
+                                             t-on-click="onNavigate"
+                                             t-att-data-action-url="dep.link">
+                                            <i t-att-class="dep.icon or 'fa fa-question'"/>
+                                            <span class="step-label"><t t-esc="dep.name"/></span>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+
+                    <!-- Báo cáo -->
+                    <t t-if="wf.report">
+                        <div class="workflow-report">
+                            <div class="workflow-section-title">
+                                Báo cáo
+                            </div>
+                            <div class="workflow-report-list">
+                                <t t-foreach="wf.report" t-as="rpt" t-key="rpt_index">
+                                    <div class="workflow-report-item"
+                                         t-on-click="onNavigate"
+                                         t-att-data-action-url="rpt.link">
+                                        <i t-att-class="rpt.icon or 'fa fa-question'"/>
+                                        <span class="step-label"><t t-esc="rpt.name"/></span>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

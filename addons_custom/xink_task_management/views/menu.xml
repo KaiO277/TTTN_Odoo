@@ -1,0 +1,11 @@
+<odoo>
+    <menuitem id="xink_task_management_menu_root"
+              name="Quản lý Công việc"
+              parent="sale.sale_menu_root"
+              sequence="90"/>
+    <menuitem id="xink_task_management_menu_task"
+              name="Công việc"
+              parent="xink_task_management_menu_root"
+              action="action_task_activity_v2"
+              sequence="91"/>
+</odoo>

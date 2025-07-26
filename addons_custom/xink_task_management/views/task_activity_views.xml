@@ -1,0 +1,76 @@
+<odoo>
+    <!-- Form View -->
+    <record id="view_task_activity_form_v2" model="ir.ui.view">
+        <field name="name">mail.activity.form.task.v2</field>
+        <field name="model">mail.activity</field>
+        <field name="arch" type="xml">
+            <form string="Công việc">
+                <sheet>
+                    <group>
+                        <field name="task_name"/>
+                        <field name="user_id"/>
+                        <field name="date_deadline"/>
+                        <field name="priority"/>
+                        <field name="task_tag_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View (DÙNG <list> CHO ODOO 17+) -->
+    <record id="view_task_activity_list_v2" model="ir.ui.view">
+        <field name="name">mail.activity.list.task.v2</field>
+        <field name="model">mail.activity</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="task_name"/>
+                <field name="user_id"/>
+                <field name="date_deadline"/>
+                <field name="priority"/>
+                <field name="task_tag_ids" widget="many2many_tags"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_task_activity_search_v2" model="ir.ui.view">
+        <field name="name">mail.activity.search.task.v2</field>
+        <field name="model">mail.activity</field>
+        <field name="arch" type="xml">
+            <search string="Tìm kiếm công việc">
+                <filter name="all" string="Tất cả" domain="[]"/>
+                <filter name="not_done" string="Chưa hoàn thành" domain="[('active','=',True)]"/>
+                <filter name="done" string="Đã hoàn thành" domain="[('active','=',False)]"/>
+                <separator/>
+                <filter name="important" string="Quan trọng" domain="[('priority', '=', '1')]"/>
+                <filter name="overdue" string="Quá hạn" domain="[('date_deadline', '&lt;', context_today())]"/>
+                <separator/>
+                <field name="task_name"/>
+                <field name="user_id"/>
+                <field name="task_tag_ids"/>
+                <group expand="0" string="Nhóm theo">
+                    <filter name="group_by_user" string="Người thực hiện" context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_task_activity_v2" model="ir.actions.act_window">
+        <field name="name">Quản lý Công việc</field>
+        <field name="res_model">mail.activity</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_task_activity_list_v2"/>
+        <field name="search_view_id" ref="view_task_activity_search_v2"/>
+        <field name="context">{'search_default_not_done': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Chưa có công việc nào.
+            </p>
+            <p>
+                Nhấn "Mới" để tạo công việc đầu tiên!
+            </p>
+        </field>
+    </record>
+</odoo> 

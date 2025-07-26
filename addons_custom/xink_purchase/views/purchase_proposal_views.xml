@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_purchase_proposal_form" model="ir.ui.view">
+        <field name="name">purchase.proposal.form</field>
+        <field name="model">purchase.proposal</field>
+        <field name="arch" type="xml">
+            <form string="Phiếu Đề Xuất Mua Hàng">
+                <header>
+                    <button string="Xác nhận" type="object" name="action_submit" invisible="state != 'draft'" class="btn-primary"/>
+                    <button string="Hủy" type="object" name="action_reject" invisible="state != 'submitted'"/>
+                    <button string="Duyệt" type="object" name="action_approve" invisible="state != 'submitted'" class="btn-success"/>
+                    <button string="Đặt lại" type="object" name="action_reset" invisible="state not in ('submitted','approved','rejected')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved"/>
+                    <field name="status_display" widget="html" readonly="1" invisible="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1" placeholder="Phiếu đề xuất"/>
+                        </h1>
+                    </div>
+                    
+                    <group>
+                        <group>
+                            <field name="department_id" string="Bộ phận đề nghị"/>
+                            <field name="purpose" string="Mục đích sử dụng"/>
+                        </group>
+                        <group>
+                            <field name="usage_period" string="Thời hạn sử dụng"/>
+                        </group>
+                    </group>
+                    <group col="1">
+                        <field name="content" string="Nội dung" placeholder="Mô tả chi tiết nội dung đề xuất..."/>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Sản phẩm">
+                            <field name="line_ids" nolabel="1">
+                                <list editable="bottom">
+                                    <field name="product_id" string="Sản phẩm" domain="[('purchase_ok', '=', True)]"/>
+                                    <field name="quantity" string="Số lượng"/>
+                                    <field name="uom_id" string="ĐVT"/>
+                                    <field name="specification" string="Đặc tính/quy cách kỹ thuật"/>
+                                    <field name="estimated_price" string="Giá dự kiến"/>
+                                </list>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="product_id" string="Sản phẩm" domain="[('purchase_ok', '=', True)]"/>
+                                            <field name="product_name" string="Tên sản phẩm"/>
+                                            <field name="quantity" string="Số lượng"/>
+                                            <field name="uom_id" string="ĐVT"/>
+                                        </group>
+                                        <group>
+                                            <field name="estimated_price" string="Giá dự kiến"/>
+                                        </group>
+                                    </group>
+                                    <group>
+                                        <field name="specification" string="Đặc tính/quy cách kỹ thuật"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Ghi chú">
+                            <field name="note" nolabel="1" placeholder="Thêm ghi chú..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_purchase_proposal_line_form" model="ir.ui.view">
+        <field name="name">purchase.proposal.line.form</field>
+        <field name="model">purchase.proposal.line</field>
+        <field name="arch" type="xml">
+            <form string="Chi tiết đề xuất">
+                <group>
+                    <group>
+                        <field name="product_id" string="Sản phẩm" domain="[('purchase_ok', '=', True)]"/>
+                        <field name="product_name" widget="jsonb" string="Tên sản phẩm"/>
+                        <field name="quantity" string="Số lượng"/>
+                        <field name="uom_id" string="ĐVT"/>
+                    </group>
+                    <group>
+                        <field name="estimated_price" string="Giá dự kiến"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="specification" string="Đặc tính/quy cách kỹ thuật"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_purchase_proposal_tree" model="ir.ui.view">
+        <field name="name">purchase.proposal.tree</field>
+        <field name="model">purchase.proposal</field>
+        <field name="arch" type="xml">
+            <list decoration-info="state=='draft'" decoration-warning="state=='submitted'" decoration-success="state=='approved'" decoration-danger="state=='rejected'">
+                <field name="name" string="Phiếu đề xuất"/>
+                <field name="department_id" string="Bộ phận đề nghị"/>
+                <field name="purpose" string="Mục đích sử dụng"/>
+                <field name="content" string="Nội dung" optional="hide"/>
+                <field name="usage_period" string="Thời hạn sử dụng" optional="show"/>
+                <field name="status_display" string="Trạng thái" widget="html"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_purchase_proposal_search" model="ir.ui.view">
+        <field name="name">purchase.proposal.search</field>
+        <field name="model">purchase.proposal</field>
+        <field name="arch" type="xml">
+            <search string="Tìm kiếm Đề xuất mua hàng">
+                <field name="name" string="Mã đề xuất"/>
+                <field name="department_id" string="Phòng ban"/>
+                <field name="purpose" string="Mục đích"/>
+                <field name="content" string="Nội dung"/>
+                <field name="usage_period" string="Thời hạn sử dụng"/>
+                
+                <filter name="draft" string="Nháp" domain="[('state', '=', 'draft')]"/>
+                <filter name="submitted" string="Đã gửi" domain="[('state', '=', 'submitted')]"/>
+                <filter name="approved" string="Đã duyệt" domain="[('state', '=', 'approved')]"/>
+                
+                <group expand="0" string="Nhóm theo">
+                    <filter name="group_by_department" string="Phòng ban" context="{'group_by': 'department_id'}"/>
+                    <filter name="group_by_state" string="Trạng thái" context="{'group_by': 'state'}"/>
+                    <filter name="group_by_purpose" string="Mục đích sử dụng" context="{'group_by': 'purpose'}"/>
+                    <filter name="group_by_date_request" string="Ngày đề xuất" context="{'group_by': 'date_request'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_purchase_proposal" model="ir.actions.act_window">
+        <field name="name">Phiếu Đề Xuất Mua Hàng</field>
+        <field name="res_model">purchase.proposal</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_purchase_proposal_tree"/>
+        <field name="search_view_id" ref="view_purchase_proposal_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tạo phiếu đề xuất mua hàng đầu tiên!
+            </p>
+            <p>
+                Tạo và quản lý các phiếu đề xuất mua hàng của công ty.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_purchase_proposal_list"
+              name="Đề Xuất Mua Hàng"
+              parent="purchase.menu_purchase_root"
+              action="action_purchase_proposal"
+              sequence="3"
+              groups="purchase.group_purchase_user"/>
+
+</odoo>

@@ -1,0 +1,8 @@
+<odoo>
+    <record id="seq_purchase_proposal" model="ir.sequence">
+        <field name="name">Purchase Proposal</field>
+        <field name="code">purchase.proposal</field>
+        <field name="prefix">PPH/%(year)s/</field>
+        <field name="padding">4</field>
+    </record>
+</odoo>
