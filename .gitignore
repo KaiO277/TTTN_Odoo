@@ -56,5 +56,7 @@ requirements-deploy.txt
 /requirements-deploy.txt
 /odoo-bin
 /odoo.conf
+note-setup.txt
 
-/addons-custom/ai_chat_base/
+/addons_custom/
+/addons-custom/
