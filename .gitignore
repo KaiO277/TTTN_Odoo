@@ -49,9 +49,10 @@ package.json
 /man/
 /share/
 /src/
-*/requirements.txt
-*/requirements-dev.txt
-*/odoo.config
-*/odoo.conf
-requirements-deploy.txt
+
 requirements.txt
+requirements-deploy.txt
+
+*/requirements-deploy.txt
+*/odoo-bin
+*/odoo.conf
