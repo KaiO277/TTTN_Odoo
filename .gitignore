@@ -58,5 +58,4 @@ requirements-deploy.txt
 /odoo.conf
 note-setup.txt
 
-/addons_custom/
-/addons-custom/
+
