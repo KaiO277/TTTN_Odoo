@@ -1,0 +1,14 @@
+<odoo>
+    <menuitem id="custom_menu_synthetic"
+              name="Summary"
+              parent="sale.menu_sale_report"
+              action="sale.action_order_report_all"
+              sequence="20"/>
+
+    <menuitem id="custom_menu_employee"
+              name="Salesperson"
+              parent="sale.menu_sale_report"
+              action="sale.action_order_report_salesperson"
+              sequence="50"/>
+
+</odoo>

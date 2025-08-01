@@ -1,0 +1,13 @@
+<odoo>
+    <record id="view_order_form_hide_price_unit_readonly_for_manager" model="ir.ui.view">
+        <field name="name">sale.order.form.hide.price.unit.readonly.for.manager</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Ẩn trường price_unit readonly (đơn giá mới) khi là quản trị viên -->
+            <xpath expr="//field[@name='order_line']/list/field[@name='price_unit'][@readonly='1']" position="attributes">
+                <attribute name="groups">!sales_team.group_sale_manager</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo> 

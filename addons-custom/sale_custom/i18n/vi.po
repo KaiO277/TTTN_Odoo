@@ -1,0 +1,56 @@
+#. module: sale
+#: model:ir.ui.menu,name:sale.menu_sale_report
+msgid "Reporting"
+msgstr "Báo cáo doanh thu"
+
+#. module: sale
+#: model:ir.ui.menu,name:sale.report_sales_team
+#: model:ir.ui.menu,name:sale.sales_team_config
+msgid "Sales Teams"
+msgstr "Bộ phận bán hàng"
+
+#. module: loyalty
+#: model:ir.actions.act_window,name:loyalty.loyalty_program_gift_ewallet_action
+msgid "Gift cards & eWallet"
+msgstr "Thẻ quà tặng"
+
+#. module: pos_loyalty
+#: model:ir.ui.menu,name:pos_loyalty.menu_gift_ewallet_type_config
+msgid "Gift cards & eWallet"
+msgstr "Thẻ quà tặng"
+
+#. module: sale_loyalty
+#: model:ir.ui.menu,name:sale_loyalty.menu_gift_ewallet_type_config
+msgid "Gift cards & eWallet"
+msgstr "Thẻ quà tặng"
+
+#. module: website_sale_loyalty
+#: model:ir.ui.menu,name:website_sale_loyalty.menu_gift_ewallet_type_config
+msgid "Gift cards & eWallet"
+msgstr "Thẻ quà tặng"
+
+#. module: sale
+#: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_content
+msgid "<span>Disc.%</span>"
+msgstr "<span>% chiết khấu</span>"
+
+#. module: sale
+#: model_terms:ir.ui.view,arch_db:sale.view_order_form
+msgid "Disc.%"
+msgstr "% Chiết khấu"
+
+#. module: sale
+#: model:ir.ui.menu,name:sale.menu_sale_order_invoice
+msgid "Orders To Invoice"
+msgstr "Đơn hàng cần xuất hóa đơn"
+
+#. module: sale_custom
+#: model:ir.ui.menu,name:sale_custom.custom_menu_synthetic
+msgid "Summary"
+msgstr "Tổng hợp"
+
+#. module: sale_custom
+#: model:ir.ui.menu,name:sale_custom.custom_menu_employee
+msgid "Salesperson"
+msgstr "Nhân viên"
